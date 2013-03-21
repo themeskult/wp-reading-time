@@ -39,7 +39,7 @@ class WPReadingTime {
 		
 		// Register site styles and scripts
 		add_action( 'wp_enqueue_scripts', array( $this, 'register_plugin_scripts' ) );
-		add_action('wp_head', array( $this, 'my_custom_js'));
+		add_action('wp_footer', array( $this, 'my_custom_js'));
 
 		// Register hooks that are fired when the plugin is activated, deactivated, and uninstalled, respectively.
 		register_activation_hook( __FILE__, array( $this, 'activate' ) );
@@ -52,18 +52,17 @@ class WPReadingTime {
 	 * Registers and enqueues plugin-specific scripts.
 	 */
 	public function register_plugin_scripts() {
-	
-		wp_enqueue_script( 'jquery-reading-time', "https://raw.github.com/themeskult/jquery-reading-time/master/jquery.readingTime.js", array('jquery'));
+
+		wp_enqueue_script( 'jquery-reading-time', "//raw.github.com/themeskult/jquery-reading-time/master/jquery.readingTime.js", array('jquery'));
 	
 	} // end register_plugin_scripts
 
 
 	public function my_custom_js() {
 		echo "
-		<script>
+		<script type='text/javascript' charset='utf-8'>
 		(function($) {
-			alert('here');
-		    $('.post').readingTime();
+		    $('body.single .post').readingTime();
 		})( jQuery );
 		</script>
 		";
