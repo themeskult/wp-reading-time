@@ -53,7 +53,7 @@ class WPReadingTime {
 	 */
 	public function register_plugin_scripts() {
 
-		wp_enqueue_script( 'jquery-reading-time', "//raw.github.com/themeskult/jquery-reading-time/master/jquery.readingTime.js", array('jquery'));
+		wp_enqueue_script( 'jquery-reading-time', plugins_url("wp-reading-time/js/jquery.readingTime.js"), array('jquery'));
 	
 	} // end register_plugin_scripts
 
